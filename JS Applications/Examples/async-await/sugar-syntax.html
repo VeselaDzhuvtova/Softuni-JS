@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>// Асинхронната функция е функция, която работи с промиси и връща промиси
+
+        const baseUrl = 'http://swapi.dev/api';
+        
+        async function getStarwarsCharacter(id) { // деклариране на function declaration като async
+            let response = await fetch(`${baseUrl}/people/${id}`) // вместо .then ползваме await.
+            let character = await response.json();
+        
+            return character;
+        }
+
+        getStarwarsCharacter(4)
+        .then(name => console.log(name))
+        .catch(err => console.log(err))
+        // const getStarwarsCharacter = async function() // деклариране на function expresion като async
+        
+        // const getStarwarsCharacter = async () => { // arrow function като async
+        
+        // }
+        
+        //  Всяка асинхронна функция връща промис
+        </script>
+</body>
+</html>

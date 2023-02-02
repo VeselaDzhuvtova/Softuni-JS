@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>My phonebook</h1>
+    <button id="load-phones">Load</button>
+
+    <ul id="phone-list">
+
+    </ul>
+    <script>
+        const baseUrl = 'http://localhost:3030/jsonstore'
+        const buttonElement = document.getElementById('load-phones');
+        const phoneList = document.getElementById('phone-list');
+
+        buttonElement.addEventListener('click', () => {
+            fetch(`${baseUrl}/phonebook`)
+            .then(res => res.json())
+            .then(phones => {
+                Object.values(phones)
+                .forEach(phone => {
+                    let phoneElement = document.createElement('li');
+                    phoneElement.textContent = phone.person;
+                    phoneList.appendChild(phoneElement);
+                });
+            })
+            .catch(err => console.log(err));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+
+
+div {
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #e3e3e3;
+    height: 200px;
+    width: 400px;
+}
+
+h3 {
+    color: #293449;
+    text-align: center;
+}
+
+ol {
+    text-align: center;
+}
+
+li {
+    text-align: left;
+    text-decoration: underline;
+    font-size: 20px;
+}

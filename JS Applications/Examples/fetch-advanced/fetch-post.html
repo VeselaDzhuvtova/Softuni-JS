@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>My phonebook</h1>
+    <input type="text" name="title" id="title" />
+    <button id="add-phone">Add</button>
+    <button id="load-phones">Load</button>
+
+    <ul id="phone-list">
+
+    </ul>
+    <script>
+        const baseUrl = 'http://localhost:3030/jsonstore'
+        const titleElement = document.getElementById('title')
+        const buttonElement = document.getElementById('load-phones');
+        const addButtonElement = document.getElementById('add-phone');
+        const phoneList = document.getElementById('phone-list');
+
+        buttonElement.addEventListener('click', () => {
+            fetch(`${baseUrl}/phonebook`) // fetch(`$${baseUrl}/phones`, GET)
+                .then(res => res.json())
+                .then(phones => {
+                    phoneList.innerHTML = ''; // изпразваме съдържанието и след повторно натискане на бутона не се появява втори път, а зарежда наново
+                    Object.values(phones)
+                        .forEach(phone => {
+                            let phoneElement = document.createElement('li');
+                            phoneElement.textContent = phone.person;
+                            phoneList.appendChild(phoneElement);
+                        });
+                })
+                .catch(err => console.log(err));
+        });
+
+        addButtonElement.addEventListener('click', () => {
+            let title = titleElement.value;
+
+            fetch(`${baseUrl}/phonebook`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json' // казваме че ще пратим JSON. Този обект можем да си го изнесем в променлива от{ до }.
+                },
+                body: JSON.stringify({ title }) // обръщаме го в текст, защото HTTP заявките могат да обработват само текст
+            })
+                .then(res => res.json())
+                .then(phone => {
+                    let phoneElement = document.createElement('li');
+                    phoneElement.textContent = phone.person;
+                    phoneList.appendChild(phoneElement);
+                })
+        });
+        // По default метода на заявката на fetch е GET.
+// Затова не го упоменаваме никъде, а ако искаме 
+// да е 'POST' например, трябва да го зададем
+    </script>
+</body>
+
+</html>

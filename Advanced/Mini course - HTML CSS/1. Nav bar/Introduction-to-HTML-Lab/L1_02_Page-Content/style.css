@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #ccc;
+}
+
+section {
+    margin-left: 20px;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+header > p {
+    font-style: italic;
+}
+
+article > p {
+    font-size: 24px;
+}
+
+nav {
+    background: #234465;
+}
+
+nav ul {
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+}
+nav ul li {
+    display: inline-block;
+}
+nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}

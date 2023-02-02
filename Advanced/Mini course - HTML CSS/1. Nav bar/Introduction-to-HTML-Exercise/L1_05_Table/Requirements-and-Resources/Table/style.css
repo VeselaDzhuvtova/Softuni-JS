@@ -1,0 +1,17 @@
+table, td {
+    border: 1px solid black;
+    text-align: right;
+    border-collapse: collapse;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+#bold {
+    font-weight: bold;
+}
+#John {
+    text-align: left;
+}
